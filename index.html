@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iframist — Iframe URL Extractor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Iframist</span>
+      </div>
+      <p class="tagline">Extract iframe stream URLs from any page</p>
+    </header>
+
+    <!-- Scrape Form -->
+    <form class="scrape-form" id="scrapeForm">
+      <div class="input-group">
+        <span class="input-icon">🔗</span>
+        <input type="url" id="urlInput" class="url-input" placeholder="https://example-stream-site.com/match" required
+          autocomplete="off" autocorrect="off" spellcheck="false" />
+        <button type="submit" class="scrape-btn" id="scrapeBtn">
+          <span class="btn-text">Scrape</span>
+          <span class="btn-spinner" id="btnSpinner" hidden></span>
+        </button>
+      </div>
+    </form>
+
+    <!-- Status / Results Area -->
+    <div class="results-area" id="resultsArea">
+      <!-- Idle state -->
+      <div class="state-idle" id="stateIdle">
+        <div class="idle-icon">🎯</div>
+        <p>Paste a streaming page URL above and hit <strong>Scrape</strong></p>
+      </div>
+
+      <!-- Loading state -->
+      <div class="state-loading" id="stateLoading" hidden>
+        <div class="spinner-ring"></div>
+        <p class="loading-text">Loading page with headless browser…</p>
+        <p class="loading-sub">This can take up to 30 seconds</p>
+      </div>
+
+      <!-- Error state -->
+      <div class="state-error" id="stateError" hidden>
+        <div class="error-icon">⚠️</div>
+        <p class="error-message" id="errorMessage"></p>
+      </div>
+
+      <!-- Empty state -->
+      <div class="state-empty" id="stateEmpty" hidden>
+        <div class="empty-icon">🔍</div>
+        <p id="emptyMessage">No iframes found on this page.</p>
+      </div>
+
+      <!-- Results -->
+      <div class="state-results" id="stateResults" hidden>
+        <div class="results-header">
+          <span class="results-count" id="resultsCount"></span>
+          <button class="copy-all-btn" id="copyAllBtn">Copy All</button>
+        </div>
+        <ul class="iframe-list" id="iframeList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
